@@ -6,11 +6,11 @@ class Blog(models.Model):
     body = models.TextField()
     image = models.ImageField(upload_to = 'images/')
 
+    def __str__(self):
+        return self.title
+
     def summary(self):
         return self.body[:200]+'...'
 
-# Create your models here.
-#add the blog app to the settings
-#create migration
-#migrate
-#add to admin
+    def pub_date_pretty(self):
+        return self.pub_date.strftime("%d %b %Y")
